@@ -55,7 +55,7 @@ router.get("/:id", async (req, res, next) => {
 // ERROR: duplicate keys can be made
 router.post("/", async (req, res, next) => {
   try {
-    const results = Campus.create(req.body);
+    const results = await Campus.create(req.body);
     if (!results) {
       res.status(400).send("Failed to create campus");
     } else {

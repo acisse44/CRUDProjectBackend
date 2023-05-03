@@ -47,7 +47,7 @@ router.get("/:id", async (req, res, next) => {
 // ERROR: duplicate keys can be made
 router.post("/", async (req, res, next) => {
   try {
-    const results = Student.create(req.body);
+    const results = await Student.create(req.body);
     if (!results) {
       res.status(400).send("Failed to create Student");
     } else {
