@@ -1,5 +1,5 @@
-const Student = require("./studentModel.js");
-const Campus = require("./campusModel.js");
+const Student = require("./student.js");
+const Campus = require("./campus.js");
 
 
 // Our Associations: One to One (1:1) & Many to Many (M:N)

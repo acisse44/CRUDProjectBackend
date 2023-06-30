@@ -2,11 +2,11 @@
 
 const express = require("express");
 const router = express.Router();
-const { campusModel } = require("../db/models");
+const { Campus } = require("../db/models");
 
 router.get("/", async (req, res, next) => {
   try {
-    const allCampuses = await campusModel.findAll(); //fetching all campuses from db
+    const allCampuses = await Campus.findAll(); //fetching all campuses from db
 
     allCampuses
       ? res.status(200).json(allCampuses) 
@@ -20,7 +20,7 @@ router.get("/:id", async (req, res, next) => {
     try {
       const campusId = req.params.id;
   
-      const campus = await campusModel.findByPk(campusId);
+      const campus = await Campus.findByPk(campusId);
   
       campus
         ? res.status(200).json(campus)
