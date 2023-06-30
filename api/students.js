@@ -2,11 +2,11 @@
 
 const express = require("express");
 const router = express.Router();
-const { studentModel } = require("../db/models");
+const { Student } = require("../db/models");
 
 router.get("/", async (req, res, next) => { 
   try {
-    const allStudents = await studentModel.findAll(); //fetching all students from database
+    const allStudents = await Student.findAll(); //fetching all students from database
 
     allStudents
       ? res.status(200).json(allStudents) 
@@ -19,7 +19,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => { 
     try {
       const studentId = req.params.id; //retreive the student id first
-      const student = await studentModel.findByPk(studentId); //fetching a single student from database
+      const student = await Student.findByPk(studentId); //fetching a single student from database
       student
         ? res.status(200).json(student)
         : res.status(404).send("Student Not Found");

@@ -18,7 +18,6 @@ const Campus = db.define("campus", {
   address: {
     type: DataTypes.STRING,
     allowNull: false,
-    
   },
 });
 
