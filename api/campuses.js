@@ -23,7 +23,7 @@ router.delete("/:id", async (req, res, next) => {
     const campus = await Campus.findByPk(campusID);
 
     if (!campus) {
-      res.status(400).send("Campus not found");
+      res.status(404).send("Campus not found");
     } else {
       await campus.destroy();
       res.status(200).send("Campus deleted successfully");
@@ -47,13 +47,12 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-
 // ERROR: duplicate keys can be made
 router.post("/", async (req, res, next) => {
   try {
     const results = Campus.create(req.body);
     if (!results) {
-      res.status(400).send("Campus not found");
+      res.status(400).send("Failed to create campus");
     } else {
       res.status(200).send("Campus added successfully");
     }
@@ -64,11 +63,15 @@ router.post("/", async (req, res, next) => {
 
 router.put("/", async (req, res, next) => {
   try {
-    const results = Campus.update(req.body);
-    if (!results) {
-      res.status(400).send("Campus not found");
+    const campusId = req.body.id;
+
+    const campus = await Campus.findByPk(campusId);
+
+    if (!campus) {
+      res.status(400).send("Failed to update campus");
     } else {
-      res.status(200).send("Campus added successfully");
+      await campus.update(req.body);
+      res.status(200).send("Campus updated successfully");
     }
   } catch (error) {
     next(error);
