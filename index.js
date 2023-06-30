@@ -4,6 +4,10 @@ const PORT = "8080";
 const app = express();
 const cors = require("cors");
 
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}))
 app.use(cors());
 // Mount on API
 app.use("/api", require("./api"));
