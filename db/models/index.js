@@ -3,9 +3,8 @@ const Campus = require("./campus.js");
 
 
 // Our Associations: one-to-many
-Campus.hasMany(Student);
-Student.belongsTo(Campus);
-
+Campus.hasMany(Student, { foreignKey: "campusId" });
+Student.belongsTo(Campus, { foreignKey: "campusId" });
 
 module.exports = {
   
