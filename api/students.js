@@ -37,7 +37,7 @@ router.get("/:id", async (req, res, next) => {
     const studentId = req.params.id; //retreive the student id first
     const student = await Student.findByPk(studentId); //fetching a single student from database
     student
-      ? res.status(200).json(allStudents)
+      ? res.status(200).json(student)
       : res.status(404).send("Student Not Found");
   } catch (error) {
     next(error);

@@ -2,7 +2,7 @@
 
 const express = require("express");
 const router = express.Router();
-const { Campus } = require("../db/models");
+const { Campus, Student } = require("../db/models");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -38,9 +38,15 @@ router.get("/:id", async (req, res, next) => {
     const campusId = req.params.id;
 
     const campus = await Campus.findByPk(campusId);
+    const students = await Student.findAll({ where: { campusId } });
+
+    const campusData = {
+      ...campus.toJSON(),
+      students: students || [],
+    };
 
     campus
-      ? res.status(200).json(campus)
+      ? res.status(200).json(campusData)
       : res.status(404).send("Campus Not Found");
   } catch (error) {
     next(error);
