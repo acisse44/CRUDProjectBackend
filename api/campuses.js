@@ -6,8 +6,7 @@ const { Campus, Student } = require("../db/models");
 
 router.get("/", async (req, res, next) => {
   try {
-    const allCampuses = await Campus.findAll(); //fetching all campuses from db
-
+    const allCampuses = await Campus.findAll({include: Student});
     allCampuses
       ? res.status(200).json(allCampuses)
       : res.status(404).send("Campus List Not Found");
