@@ -34,7 +34,8 @@ router.delete("/:id", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => { 
   try {
-    const studentId = req.params.id; //retreive the student id first
+    const studentId = req.params.id;
+    console.log(studentId);
     const student = await Student.findByPk(studentId, { include: Campus }); //fetching a single student from database
     student
       ? res.status(200).json(student)
@@ -44,7 +45,6 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// ERROR: duplicate keys can be made
 router.post("/", async (req, res, next) => {
   try {
     const results = await Student.create(req.body);
@@ -58,10 +58,10 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/", async (req, res, next) => {
+router.put("/:id", async (req, res, next) => {
   try {
-    const studentId = req.body.id;
-
+    const studentId = req.params.id;
+    console.log(studentId);
     const student = await Student.findByPk(studentId);
 
     if (!student) {
