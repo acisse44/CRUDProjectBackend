@@ -4,13 +4,13 @@ const express = require("express");
 const router = express.Router();
 const { Student, Campus } = require("../db/models");
 
-router.get("/", async (req, res, next) => { 
+router.get("/", async (req, res, next) => {
   try {
     const allStudents = await Student.findAll(); //fetching all students from database
 
     allStudents
-      ? res.status(200).json(allStudents) 
-      : res.status(404).send("Student List Not Found"); 
+      ? res.status(200).json(allStudents)
+      : res.status(404).send("Student List Not Found");
   } catch (error) {
     next(error);
   }
@@ -32,7 +32,7 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-router.get("/:id", async (req, res, next) => { 
+router.get("/:id", async (req, res, next) => {
   try {
     const studentId = req.params.id;
     console.log(studentId);

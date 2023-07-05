@@ -1,13 +1,12 @@
-require('dotenv').config();
+require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
 const { name } = require("../package.json");
 
-const db = new Sequelize(`postgres://localhost:5432/${name}`,
-{
-  username: process.env.USERNAME, 
+const db = new Sequelize(`postgres://localhost:5432/${name}`, {
+  username: process.env.USERNAME,
   password: process.env.PASSWORD,
-  logging: false
+  logging: false,
 });
 
 module.exports = db;

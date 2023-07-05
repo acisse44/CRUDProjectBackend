@@ -6,7 +6,7 @@ const { Campus, Student } = require("../db/models");
 
 router.get("/", async (req, res, next) => {
   try {
-    const allCampuses = await Campus.findAll({include: Student});
+    const allCampuses = await Campus.findAll({ include: Student });
     allCampuses
       ? res.status(200).json(allCampuses)
       : res.status(404).send("Campus List Not Found");
@@ -53,6 +53,10 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
+    if (!req.body.imageUrl) {
+      req.body.imageUrl =
+        "https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg";
+    }
     const results = await Campus.create(req.body);
     if (!results) {
       res.status(400).send("Failed to create campus");
