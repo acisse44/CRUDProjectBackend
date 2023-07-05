@@ -47,6 +47,10 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
+    if (!req.body.imageUrl) {
+      req.body.imageUrl =
+        "https://t4.ftcdn.net/jpg/02/51/95/53/360_F_251955356_FAQH0U1y1TZw3ZcdPGybwUkH90a3VAhb.jpg";
+    }
     const results = await Student.create(req.body);
     if (!results) {
       res.status(400).send("Failed to create Student");
