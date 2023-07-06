@@ -1,7 +1,7 @@
 {
   "name": "crudprojectbackend",
   "version": "1.0.0",
-  "description": "",
+  "description": "## <p align=\"center\">[Design Paper](https://tinyurl.com/2bzexf57)</p>",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
