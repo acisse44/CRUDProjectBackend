@@ -2,27 +2,28 @@ const db = require("./db");
 const { Student, Campus } = require("./db/models");
 
 const seedCampuses = [
-  {   
-    name: "Brooklyn College", 
-    imageUrl: "https://www.brooklyn.edu/wp-content/uploads/NEWS-Default-1-Featured.jpg",
-    description: "Brooklyn College Campus", 
-    address: "2900 Bedford Ave, Brooklyn, NY 11210" 
+  {
+    name: "Brooklyn College",
+    imageUrl:
+      "https://www.brooklyn.edu/wp-content/uploads/NEWS-Default-1-Featured.jpg",
+    description: "Brooklyn College Campus",
+    address: "2900 Bedford Ave, Brooklyn, NY 11210",
   },
 
-  {   
-    name: "City College", 
-    imageUrl: "https://www.harlemonestop.com/images/organizations/1542.jpg?v=1587326290",
-    description: "City College Campus", 
-    address: "160 Convent Ave, New York, NY 10031" 
+  {
+    name: "City College",
+    imageUrl:
+      "https://www.harlemonestop.com/images/organizations/1542.jpg?v=1587326290",
+    description: "City College Campus",
+    address: "160 Convent Ave, New York, NY 10031",
   },
 
- {  
-    name: "Queens College", 
+  {
+    name: "Queens College",
     imageUrl: "https://qns.com/wp-content/uploads/2020/11/twitter_sm-07.png",
-    description: "Queens College Campus", 
-    address: "65-30 Kissena Blvd, Queens, NY 11367" 
+    description: "Queens College Campus",
+    address: "65-30 Kissena Blvd, Queens, NY 11367",
   },
-
 ];
 
 const seedStudents = [
@@ -55,7 +56,7 @@ const seedStudents = [
 
       },
 ];
-  
+
 const seed = async () => {
     try {
       await db.sync( { force: true }) //tells db to delete all the data and then re-sync (refresh button)

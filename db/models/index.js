@@ -1,7 +1,6 @@
 const Student = require("./student.js");
 const Campus = require("./campus.js");
 
-
 // Our Associations: one-to-many
  Campus.hasMany(Student, { foreignKey: "campusId", onDelete: "CASCADE" }); 
 Student.belongsTo(Campus, { foreignKey: "campusId" });  //causes an extra campusID column thats not being used
@@ -10,7 +9,6 @@ Student.belongsTo(Campus, { foreignKey: "campusId" });  //causes an extra campus
                           //foreign key, we may be overriding, no need to manually write 
   
 module.exports = {
-  
   Student,
   Campus,
 };

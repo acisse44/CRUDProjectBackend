@@ -22,7 +22,7 @@ const Student = db.define("student", {
   gpa: {
     type: DataTypes.FLOAT,
     allowNull: false,
-    validate: { 
+    validate: {
       min: 0.0,
       max: 4.0,
     },
